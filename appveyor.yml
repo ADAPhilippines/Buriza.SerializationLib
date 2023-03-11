@@ -1,6 +1,0 @@
-configuration: Release
-image: Visual Studio 2022
-
-# restore NuGet packages before running MSBuild
-before_build:
-  - nuget restore
