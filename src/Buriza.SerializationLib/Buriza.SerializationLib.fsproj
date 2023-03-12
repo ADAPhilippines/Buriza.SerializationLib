@@ -7,6 +7,11 @@
 
   <ItemGroup>
     <Compile Include="Library.fs" />
+    <Compile Include="StringHelpers.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="PeterO.Cbor" Version="4.5.2" />
   </ItemGroup>
 
 </Project>

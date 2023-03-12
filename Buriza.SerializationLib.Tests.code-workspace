@@ -1,0 +1,15 @@
+{
+	"folders": [
+		{
+			"path": "src/Buriza.SerializationLib.Tests"
+		},
+		{
+			"path": "src/Buriza.SerializationLib"
+		}
+	],
+	"settings": {
+		"FSharp.inlayHints.typeAnnotations": false,
+		"FSharp.inlayHints.enabled": false,
+		"editor.inlayHints.enabled": "offUnlessPressed"
+	}
+}
