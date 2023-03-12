@@ -26,6 +26,10 @@ type Value =
         | Lovelace lovelace -> CBORObject.FromObject(lovelace)
         | MultiAsset ma -> CBORObject.FromObject(ma.Lovelace)
 
+type Input with
+
+    member input.GetCbor = CBORObject.NewArray().Add(input.Id).Add(input.Index)
+
 type Output =
     { Address: Address
       Value: Value }
@@ -33,11 +37,17 @@ type Output =
     member output.GetCbor =
         CBORObject.NewArray().Add(output.Address).Add(output.Value.GetCbor)
 
-type Input with
+type Key = { Key: byte[]; ChainCode: byte[] }
 
-    member input.GetCbor = CBORObject.NewArray().Add(input.Id).Add(input.Index)
+type VKeyWitness =
+    { VKey: Key
+      Skey: Key
+      Signature: byte[] }
 
-type TransactionBody =
+type WitnessSet =
+    { VKeyWitnesses: ICollection<VKeyWitness> }
+
+type Body =
     { Inputs: IList<Input>
       Outputs: IList<Output>
       Fee: Coin }
@@ -69,7 +79,7 @@ type TransactionBody =
 //   ]
 
 type Transaction =
-    { Body: TransactionBody
+    { Body: Body
       IsValid: bool }
 
     member tx.Serialize =
